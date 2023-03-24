@@ -1,0 +1,76 @@
+/* variable */
+
+// breakpoint
+$breakpoint: 768px;  // PC版に切り替わるサイズ
+
+// grid system
+$grid-column: 12;  // カラム数
+$grid-gap: 16px;   // カラムとカラムの間の余白
+
+// container size
+$container-max-width: 1000px;   // 真ん中寄せにするブロックの幅
+$container-outer-padding: 8px; // SP・PCともに両端に入る余白の量。$grid-gap と同じかより大きい数値を指定
+
+// Colors
+$red: #FF3300;
+$blue: #3366CC;
+$blue-thin: #F4F8F9;
+$purple: #993366;
+$gray: #3E3E3E;
+$white: #fff;
+
+// Font Colors
+$font-color--base: $gray;
+$action-color: $blue;
+$action-color--contrast: $white;
+
+// Background Colors
+$viewport-background-color: $white;
+
+:root {
+  // Typography
+  --font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  --font-family--heading: var(--font-family);
+
+  --font-size: 16px;
+  --font-size-header-footer: 0.95em;
+  --font-size-header-footer--pc: 0.9em;
+
+  --font-weight--thin: 100;
+  --font-weight--extra-light: 200;
+  --font-weight--light: 300;
+  --font-weight--normal: 400;
+  --font-weight--medium: 500;
+  --font-weight--semi-bold: 600;
+  --font-weight--bold: 700;
+  --font-weight--extra-bold: 800;
+  --font-weight--black: 900;
+
+  // Line heights
+  --line-height: 1.5;
+  --line-height--heading: 1.2;
+
+  // Other Sizes
+  --border-radius: 0.1875rem;
+  --spacing: 1.5rem;
+  --spacing--small: 0.75rem;
+
+  // Borders
+  --border-width: 0.0625rem;
+  --border: var(--border-width) solid currentColor;
+
+  // Focus
+  --focus-outline-width: 0.1875rem;
+  --focus-outline-offset: 0.125rem;
+  --focus-outline: var(--focus-outline-width) solid #{$action-color};
+
+  // Animations
+  --duration: 150ms;
+  --timing: ease;
+
+  // opacity
+  --hover-opacity: 0.6;
+
+  // breakpoint
+  --breakpoint: $breakpoint;
+}

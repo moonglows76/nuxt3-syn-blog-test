@@ -1,0 +1,24 @@
+body {
+  background-color: $white;
+  h1 {
+    background-color: $blue;
+  }
+}
+.wrapper {
+  width: math.div(60,100)*100%;
+  margin: 0 auto;
+}
+svg {
+  display: inline-block;
+}
+.nuxt-icon svg {
+  fill: currentColor;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
