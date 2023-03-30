@@ -38,11 +38,15 @@ const isLargeScreen = useMediaQuery(`(min-width: 768px)`)
 
 <template>
   <div class="wrapper">
-    <h1>トップページ</h1>
+    <h1 id="top">トップページ</h1>
     <p>
       <span>これは</span><span>テスト</span><span>です</span><br>
       <NuxtLink to="/blog">blogページ</NuxtLink>
     </p>
+    <div>
+      <!-- この`to`はNuxtLinkのパラメーターで`href`とほぼ同じ役割だが、`href`がないとスクロールされないのでちゃんと両方書く -->
+      <NuxtLink to="#scroll">スクロールする</NuxtLink>
+    </div>
     <p>アイコンの表示<br>
       <nuxt-icon name="chat" class="icon-chat" />
     </p>
@@ -56,6 +60,8 @@ const isLargeScreen = useMediaQuery(`(min-width: 768px)`)
     <!-- <h1>{{ weather.name }}</h1>
     <p>{{ weather.weather[0].description }}</p>
     <p>{{ weather.main.temp }} °C</p> -->
+    <div id="scroll">ようこそ　<NuxtLink to="#top">ページの先頭へ戻る</NuxtLink></div>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat non rerum illum unde, error veritatis sit voluptatibus tenetur perferendis eum vero temporibus similique quaerat tempora repudiandae! Delectus porro vitae id.</p>
   </div>
 </template>
 
@@ -75,5 +81,8 @@ p {
       color: $purple;
     }
   }
+}
+#scroll {
+	margin-top: 1500px;
 }
 </style>
