@@ -6,12 +6,18 @@ const isLargeScreen = useMediaQuery(`(min-width: 768px)`)
 // const cityName = 'kagoshima'
 // const APIkey = 'bec7720eb6429bd39f103573d1af2894'
 // const { data: weather, error } = await useFetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${APIkey}&lang=ja`)
+
+
   // useFetch用の設定
-  // let contents = reactive({})
+  let contents = reactive({})
   await useFetch('http://localhost:3000/blog.xml')
     .then((response) => {
       // console.log('response')
-      // console.log(response)
+      // console.log(response.data.value)
+      const strXml = response.data.value
+      const parser = new DOMParser();
+      let xmlData  = parser.parseFromString(strXml,"text/xml");
+      console.log(xmlData);
       // let jsonData;
       // XMLをJSONに変換するオブジェクトのインスタンスを作成
       // async: 非同期かどうか
@@ -21,10 +27,11 @@ const isLargeScreen = useMediaQuery(`(min-width: 768px)`)
       //   explicitArray: false,
       //   trim: true,
       // });
-      // // 変換を実行
-      // // data: 取得したxml
-      // // json: 変換結果(jsonデータ)
-      // parser.parseString(response.data, (error, json) => {
+      // console.log(parser)
+      // 変換を実行
+      // data: 取得したxml
+      // json: 変換結果(jsonデータ)
+      // parser.parseString(response.data.value, (error, json) => {
       //   jsonData = json;
       // });
       // console.log(jsonData)
