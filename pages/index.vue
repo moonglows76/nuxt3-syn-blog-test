@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const formatted = useDateFormat(useNow(), 'YYYY-MM-DD HH:mm:ss')
-const isLargeScreen = useMediaQuery(`(min-width: 768px)`)
+const formatted = useDateWithTime(Date.now())
+const isLargeScreen = useMQ()
 // import { xml2js } from "xml2js";
 // データを取得
 // const cityName = 'kagoshima'
