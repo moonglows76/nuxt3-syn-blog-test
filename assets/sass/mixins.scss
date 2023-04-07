@@ -1,0 +1,14 @@
+@use "variables";
+
+@mixin for-sp {
+  $sp-width: variables.$breakpoint - 1px;
+  @media screen and (max-width: $sp-width) {
+    @content;
+  }
+}
+
+@mixin for-pc {
+  @media screen and (min-width: variables.$breakpoint) {
+    @content;
+  }
+}

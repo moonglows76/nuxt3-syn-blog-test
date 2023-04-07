@@ -16,6 +16,7 @@ export default defineNuxtConfig({
 @use "sass:math";
 @use "sass:color";
 @import "@/assets/sass/variables.scss";
+@import "@/assets/sass/mixins.scss";
 `,
         },
       },

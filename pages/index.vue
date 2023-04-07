@@ -94,4 +94,22 @@ p {
 #scroll {
 	margin-top: 1500px;
 }
+@include for-sp {
+  p {
+  span {
+      &:nth-child(1) {
+        color: pink;
+      }
+    }
+  }
+}
+@include for-pc {
+  p {
+  span {
+      &:nth-child(1) {
+        color: skyblue;
+      }
+    }
+  }
+}
 </style>
