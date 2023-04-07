@@ -14,10 +14,10 @@ const isLargeScreen = useMQ()
     .then((response) => {
       // console.log('response')
       // console.log(response.data.value)
-      const strXml = response.data.value
-      const parser = new DOMParser();
-      let xmlData  = parser.parseFromString(strXml,"text/xml");
-      console.log(xmlData);
+      // const strXml = response.data.value
+      // const parser = new DOMParser();
+      // let xmlData  = parser.parseFromString(strXml,"text/xml");
+      // console.log(xmlData);
       // let jsonData;
       // XMLをJSONに変換するオブジェクトのインスタンスを作成
       // async: 非同期かどうか
