@@ -57,12 +57,14 @@ const isLargeScreen = useMediaQuery(`(min-width: 768px)`)
     <p>アイコンの表示<br>
       <nuxt-icon name="chat" class="icon-chat" />
     </p>
-    <div>日付の表示<br>
-      {{ formatted }}</div>
-    <div>
-      メディアクエリの判定<br>
-      isLargeScreen: {{ isLargeScreen }}<br>
-    </div>
+    <client-only>
+      <div>日付の表示<br>
+        {{ formatted }}</div>
+      <div>
+        メディアクエリの判定<br>
+        isLargeScreen: {{ isLargeScreen }}<br>
+      </div>
+    </client-only>
     <!-- {{ contents }} -->
     <!-- <h1>{{ weather.name }}</h1>
     <p>{{ weather.weather[0].description }}</p>
