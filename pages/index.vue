@@ -8,15 +8,53 @@ const formatted = useDateWithTime(Date.now())
 
 
   // useFetch用の設定
-  let contents = reactive({})
+  let contents = ''
   await useFetch('http://localhost:3000/blog.xml')
     .then((response) => {
-      // console.log('response')
+      console.log('response')
+      let strXml = ''
       // console.log(response.data.value)
-      // const strXml = response.data.value
-      // const parser = new DOMParser();
-      // let xmlData  = parser.parseFromString(strXml,"text/xml");
-      // console.log(xmlData);
+      if (typeof response.data.value === 'string') {
+        strXml = response.data.value
+      }
+      const parser = new DOMParser();
+      let xmlData  = parser.parseFromString(strXml, "text/xml");
+      let xmlDataItems = xmlData.querySelectorAll('item')
+      console.log(xmlData);
+      // console.log(xmlData.querySelectorAll('item'));
+      // console.log(xmlData0.querySelector('title')!.textContent);
+
+      xmlDataItems.forEach(item => {
+        contents +=
+        `
+          <article class="article-list__item">
+            <div class="article-list__date">
+              ${ item.querySelector('dc\\:date')!.textContent }
+            </div>
+            <h2 class="article-list__title">
+              <a
+                href="${ item.querySelector('link')!.textContent }"
+                target="_blank"
+                class="article-list__title-link"
+              >
+                ${ item.querySelector('title')!.textContent }
+              </a>
+            </h2>
+            <div class="article-list__publisher">
+              <p class="article-list__publisher-text">
+                From <a href="${ item.querySelector('dc\\:identifier')!.textContent }"
+                target="_blank"
+                class="article-list__publisher-link"
+                >
+                  ${ item.querySelector('dc\\:publisher')!.textContent }
+                </a>
+              </p>
+            </div>
+          </article>
+        `
+      });
+      // console.log(contents)
+
       // let jsonData;
       // XMLをJSONに変換するオブジェクトのインスタンスを作成
       // async: 非同期かどうか
@@ -68,6 +106,7 @@ const formatted = useDateWithTime(Date.now())
         大きい画面か？: {{ useMQ() }}<br>
       </div>
     </client-only>
+    <div class="article-list" v-html="contents"></div>
     <!-- {{ contents }} -->
     <!-- <h1>{{ weather.name }}</h1>
     <p>{{ weather.weather[0].description }}</p>
