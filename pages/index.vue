@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const formatted = useDateWithTime(Date.now())
-const isLargeScreen = useMQ()
 // import { xml2js } from "xml2js";
 // データを取得
 // const cityName = 'kagoshima'
@@ -57,12 +56,16 @@ const isLargeScreen = useMQ()
     <p>アイコンの表示<br>
       <nuxt-icon name="chat" class="icon-chat" />
     </p>
+    <!--
+      ブラウザの状態によって表示が変わるところは
+      client-onlyコンポーネントを使わないとwarningが表示される
+    -->
     <client-only>
-      <div>日付の表示<br>
+      <div>現在時刻の表示<br>
         {{ formatted }}</div>
       <div>
         メディアクエリの判定<br>
-        isLargeScreen: {{ isLargeScreen }}<br>
+        大きい画面か？: {{ useMQ() }}<br>
       </div>
     </client-only>
     <!-- {{ contents }} -->
