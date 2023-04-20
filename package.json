@@ -10,7 +10,8 @@
   "devDependencies": {
     "@vueuse/core": "^9.13.0",
     "@vueuse/nuxt": "^9.13.0",
-    "nuxt": "^3.2.3"
+    "nuxt": "^3.4.1",
+    "nuxt-simple-sitemap": "^2.4.11"
   },
   "dependencies": {
     "fibers": "^5.0.3",

@@ -1,8 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://example.com',
+    }
+  },
   modules: [
     '@vueuse/nuxt',
-    'nuxt-icons'
+    'nuxt-icons',
+    'nuxt-simple-sitemap',
   ],
   css: [
     "normalize.css",
