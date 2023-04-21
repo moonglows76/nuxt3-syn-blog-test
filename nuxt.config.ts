@@ -9,7 +9,11 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-icons',
     'nuxt-simple-sitemap',
+    '@nuxtjs/stylelint-module',
   ],
+  stylelint: {
+    lintOnStart: false,
+  },
   css: [
     "normalize.css",
     "@/assets/sass/style.scss",
