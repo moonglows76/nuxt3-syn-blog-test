@@ -53,6 +53,7 @@ if (process.client) {
 <template>
   <div class="wrapper">
     <h1 id="top">トップページ</h1>
+    <AppLink />
     <p>
       <span>これは</span><span>テスト</span><span>です</span><br />
       <NuxtLink to="/blog">blogページ</NuxtLink>
