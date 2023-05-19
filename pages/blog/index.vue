@@ -4,7 +4,8 @@
 
 <template>
   <div>
-    blogページ
+    <h1>blogページ</h1>
+    <NuxtLink to="/">トップページに戻る</NuxtLink>
   </div>
 </template>
 
