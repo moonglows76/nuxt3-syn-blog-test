@@ -33,6 +33,13 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    '/blog': { redirect: '/info' }
+    // '/blog': { redirect: '/info' },
+    // ホームはサーバーで生成（SSR）
+    '/': { ssr: true, prerender: false },
+    // blogはビルド時にあらかじめ生成（SSG）
+    '/blog': { ssr: false, prerender: true },
+    '/blog/app': { ssr: false, prerender: true },
+    '/blog/faq': { ssr: false, prerender: true },
+    '/blog/price': { ssr: false, prerender: true },
   },
 })
