@@ -56,7 +56,9 @@ if (process.client) {
     <AppLink />
     <p>
       <span>これは</span><span>テスト</span><span>です</span><br />
-      <NuxtLink to="/blog">blogページ</NuxtLink>
+      <NuxtLink to="/blog">blogページ</NuxtLink><br>
+      <a href="/swr">SWRページ</a><br>
+      <a href="/isr">ISRページ</a><br>
     </p>
     <div>
       <!-- この`to`はNuxtLinkのパラメーターで`href`とほぼ同じ役割だが、`href`がないとスクロールされないのでちゃんと両方書く -->
