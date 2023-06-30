@@ -1,8 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   runtimeConfig: {
+    serverUrl: process.env.NUXT_PUBLIC_SITE_URL,
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://example.com',
+      localUrl: 'http://localhost:3000/',
     }
   },
   modules: [

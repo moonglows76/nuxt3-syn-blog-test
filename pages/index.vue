@@ -1,8 +1,15 @@
 <script setup lang="ts">
+// nuxt.config.tsのruntimeConfigを読み込み
+const runtimeConfig = useRuntimeConfig();
+// サーバで動作するときとクライアントで動作するときでURLを変更する
+const siteUrl = process.server ? runtimeConfig.serverUrl : runtimeConfig.public.localUrl;
+
+console.log(siteUrl);
+
 // XMLの読み込み
 let contents = "";
-const { data } = await useFetch("http://localhost:3000/blog.xml");
-let strXml = "";
+const { data } = await useFetch(`${siteUrl}blog.xml`);
+let strXml: string = "";
 // データの型チェック
 if (typeof data.value === "string") {
   strXml = data.value;
