@@ -36,8 +36,9 @@ export default defineNuxtConfig({
     preset: 'netlify',
   },
   routeRules: {
+    // SWRとISRの設定
     '/swr': { swr: 60 },
-    '/isr': { static: 60 },
+    '/isr': { isr: 60 },
     // '/blog': { redirect: '/info' },
     // ホームはサーバーで生成（SSR）
     // '/': { ssr: true, prerender: false },
