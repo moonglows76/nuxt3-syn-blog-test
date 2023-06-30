@@ -37,8 +37,8 @@ export default defineNuxtConfig({
   },
   routeRules: {
     // SWRとISRの設定
-    '/swr': { swr: 60 },
-    '/isr': { isr: 60 },
+    '/swr': { swr: 3600 },
+    '/isr': { isr: 3600 },
     // '/blog': { redirect: '/info' },
     // ホームはサーバーで生成（SSR）
     // '/': { ssr: true, prerender: false },
