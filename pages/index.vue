@@ -8,9 +8,9 @@ const siteUrl = process.server ? runtimeConfig.serverUrl : runtimeConfig.public.
 let blog_contents: Ref<{
   date: string;
   url: string | undefined;
-  title: string | undefined | null;
-  publisher?: string | undefined | null;
-  identifier?: string | undefined | null;
+  title: string | null;
+  publisher?: string | null;
+  identifier?: string | null;
 }[]> = ref([]);
 
 onMounted(async () => {
@@ -75,7 +75,7 @@ onMounted(async () => {
             {{ content.title }}
           </a>
         </h2>
-        <div class="article-list__publisher">
+        <div class="article-list__publisher" v-if="content.publisher">
           <p class="article-list__publisher-text">
             From
             <a v-if="content.identifier" :href="content.identifier" target="_blank" class="article-list__publisher-link">
