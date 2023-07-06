@@ -4,57 +4,36 @@ const runtimeConfig = useRuntimeConfig();
 // サーバで動作するときとクライアントで動作するときでURLを変更する
 const siteUrl = process.server ? runtimeConfig.serverUrl : runtimeConfig.public.localUrl;
 
-console.log(siteUrl);
+// リアクティブな変数の定義
+let blog_contents: Ref<{
+  date: string;
+  url: string | undefined;
+  title: string | undefined | null;
+  publisher?: string | undefined | null;
+  identifier?: string | undefined | null;
+}[]> = ref([]);
 
-// XMLの読み込み
-let contents = "";
-const { data } = await useFetch(`${siteUrl}blog.xml`);
-let strXml: string = "";
-// データの型チェック
-if (typeof data.value === "string") {
-  strXml = data.value;
-}
-// DOMはクライアント側でのみ処理するため、process.clientで処理を切り分け
-if (process.client) {
+onMounted(async () => {
+  // XMLの読み込み
+  const blog_response = await fetch(`${siteUrl}blog.xml`);
+  const blog_text = await blog_response.text();
+
   // 文字列をXMLとして読めるようにする
   const parser = new DOMParser();
-  let xmlData = parser.parseFromString(strXml, "text/xml");
-  let xmlDataItems = xmlData.querySelectorAll("item");
-  // 画面表示用のHTMLを組み立てる
-  xmlDataItems.forEach((item) => {
-    contents += `
-      <article class="article-list__item">
-        <div class="article-list__date">
-          ${useDateWithTime(item.querySelector("date")!.textContent).value}
-        </div>
-        <h2 class="article-list__title">
-          <a
-            href="${item
-              .querySelector("link")!
-              .textContent?.replace(
-                "http://www.synapse.jp/blog/cgi/go.cgi?url=",
-                ""
-              )}"
-            target="_blank"
-            class="article-list__title-link"
-          >
-            ${item.querySelector("title")!.textContent}
-          </a>
-        </h2>
-        <div class="article-list__publisher">
-          <p class="article-list__publisher-text">
-            From <a href="${item.querySelector("identifier")!.textContent}"
-            target="_blank"
-            class="article-list__publisher-link"
-            >
-              ${item.querySelector("publisher")!.textContent}
-            </a>
-          </p>
-        </div>
-      </article>
-    `;
+  let dom = parser.parseFromString(blog_text, "application/xml");
+  let tag = dom.querySelectorAll("item");
+
+  // 画面表示用の配列を組み立てる
+  tag.forEach((item) => {
+    blog_contents.value.push({
+      date: useDateWithTime(item.querySelector("date")!.textContent).value,
+      url: item.querySelector("link")!.textContent?.replace("http://www.synapse.jp/blog/cgi/go.cgi?url=", ""),
+      title: item.querySelector("title")!.textContent,
+      publisher: item.querySelector("publisher")!.textContent,
+      identifier: item.querySelector("identifier")!.textContent,
+    });
   });
-}
+});
 </script>
 
 <template>
@@ -84,9 +63,31 @@ if (process.client) {
         メディアクエリの判定<br />
         大きい画面か？: {{ useMQ() }}<br />
       </div>
-      <p>XMLを読み込んで表示</p>
-      <div class="article-list" v-html="contents"></div>
     </client-only>
+    <p>XMLを読み込んで表示</p>
+    <div class="article-list">
+      <article class="article-list__item" v-for="content in blog_contents">
+        <div class="article-list__date">
+          {{ content.date }}
+        </div>
+        <h2 class="article-list__title">
+          <a :href="content.url" target="_blank" class="article-list__title-link">
+            {{ content.title }}
+          </a>
+        </h2>
+        <div class="article-list__publisher">
+          <p class="article-list__publisher-text">
+            From
+            <a v-if="content.identifier" :href="content.identifier" target="_blank" class="article-list__publisher-link">
+              {{ content.publisher }}
+            </a>
+            <span v-else class="article-list__publisher-link">
+              {{ content.publisher }}
+            </span>
+          </p>
+        </div>
+      </article>
+    </div>
     <div id="scroll">
       ようこそ　<NuxtLink to="#top">ページの先頭へ戻る</NuxtLink>
     </div>
