@@ -10,6 +10,7 @@
     "build-storybook": "storybook build"
   },
   "devDependencies": {
+    "@nuxt/eslint-config": "^0.1.1",
     "@nuxtjs/stylelint-module": "^5.0.1",
     "@storybook/addon-essentials": "^7.0.12",
     "@storybook/addon-interactions": "^7.0.12",
@@ -20,6 +21,7 @@
     "@storybook/vue3-vite": "^7.0.12",
     "@vueuse/core": "^9.13.0",
     "@vueuse/nuxt": "^9.13.0",
+    "eslint": "^8.46.0",
     "nuxt": "^3.6.1",
     "nuxt-simple-sitemap": "^2.4.11",
     "postcss-html": "^1.5.0",
