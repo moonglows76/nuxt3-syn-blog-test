@@ -1,22 +1,22 @@
 /* variable */
 
 // breakpoint
-$breakpoint: 768px;  // PC版に切り替わるサイズ
+$breakpoint: 768px; // PC版に切り替わるサイズ
 
 // grid system
-$grid-column: 12;  // カラム数
-$grid-gap: 16px;   // カラムとカラムの間の余白
+$grid-column: 12; // カラム数
+$grid-gap: 16px; // カラムとカラムの間の余白
 
 // container size
-$container-max-width: 1000px;   // 真ん中寄せにするブロックの幅
+$container-max-width: 1000px; // 真ん中寄せにするブロックの幅
 $container-outer-padding: 8px; // SP・PCともに両端に入る余白の量。$grid-gap と同じかより大きい数値を指定
 
 // Colors
-$red: #FF3300;
-$blue: #3366CC;
-$blue-thin: #F4F8F9;
+$red: #ff3300;
+$blue: #3366cc;
+$blue-thin: #f4f8f9;
 $purple: #993366;
-$gray: #3E3E3E;
+$gray: #3e3e3e;
 $white: #fff;
 
 // Font Colors
@@ -29,7 +29,8 @@ $viewport-background-color: $white;
 
 :root {
   // Typography
-  --font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  --font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", Meiryo, sans-serif;
   --font-family--heading: var(--font-family);
 
   --font-size: 16px;

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 console.log('running SWR setup...')
-const {data: time} = useAsyncData(async () => new Date().toLocaleString('ja'))
+const { data: time } = useAsyncData(async () => new Date().toLocaleString('ja'))
 </script>
 
 <template>

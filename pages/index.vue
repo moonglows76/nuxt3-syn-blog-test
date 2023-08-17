@@ -103,22 +103,27 @@ onMounted(async () => {
 .wrapper {
   width: math.div(80, 100) * 100%;
 }
+
 p {
   span {
     &:nth-child(1) {
       color: $red;
     }
+
     &:nth-child(2) {
       color: $blue;
     }
+
     &:nth-child(3) {
       color: $purple;
     }
   }
 }
+
 #scroll {
   margin-top: 1500px;
 }
+
 @include for-sp {
   p {
     span {
@@ -128,6 +133,7 @@ p {
     }
   }
 }
+
 @include for-pc {
   p {
     span {
@@ -136,5 +142,4 @@ p {
       }
     }
   }
-}
-</style>
+}</style>
