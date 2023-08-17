@@ -16,7 +16,9 @@
         <NuxtLink to="/blog/faq">よくあるご質問</NuxtLink>
       </li>
     </ul>
-    <NuxtLink to="/">トップページに戻る</NuxtLink>
+    <NuxtLink to="/">
+      トップページに戻る
+    </NuxtLink>
   </div>
 </template>
 
